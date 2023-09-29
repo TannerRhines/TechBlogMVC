@@ -49,9 +49,9 @@ router.get('/project/:id', async (req, res) => {
 
     const project = projectData.get({ plain: true });
     console.log(project)
-    console.log(project.comments[0].user)
+    // console.log(project.comments[0].user)
 
-    res.render('project', {
+    res.render('test', {
       ...project,
       logged_in: req.session.logged_in
     });
