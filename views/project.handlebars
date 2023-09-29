@@ -1,0 +1,61 @@
+<div class="text-center">
+  <h2>{{name}}</h2>
+  <p>{{{get_emoji}}}</p>
+  <p>{{description}}</p>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <form class="form new-comment-form">
+      <div class="form-group">
+        <label for="project-comment">Comment here:</label>
+        <textarea class="form-input" id="project-comment" name="project-comment"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Comment!</button>
+      </div>
+    </form>
+{{#if comments.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Comments:</h3>
+
+    {{#each comments as |comment|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4>{{comment.content}} - {{comment.user_id}} </h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+
+<script type="application/javascript">
+console.log('if this works ukwtd');
+const newFormHandler = async (event) => {
+    event.preventDefault();
+    console.log('testing ')
+  
+    const content = document.querySelector('#project-comment').value.trim();
+    console.log(content)
+  
+    if (content) {
+      const response = await fetch(`/api/comments`, {
+        method: 'POST',
+        body: JSON.stringify({content}),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(JSON.stringify({content}))
+  
+      if (response.ok) {
+        // document.location.replace('/project/');
+        console.log(response)
+      } else {
+        alert('Failed to create comment');
+      }
+    }
+  };
+    document
+    .querySelector('.new-comment-form')
+    .addEventListener('submit', newFormHandler);
+</script>

@@ -1,0 +1,17 @@
+[
+    {
+      "name": "This is a post",
+      "description": "I am making a post",
+      "needed_funding": 5000
+    },
+    {
+      "name": "A fun startup",
+      "description": "A startup that will be lots of fun!",
+      "needed_funding": 10000
+    },
+    {
+      "name": "online poker",
+      "description": "A highly addictive game for gamblers to lose money.",
+      "needed_funding": 800
+    }
+  ]
