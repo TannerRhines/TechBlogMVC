@@ -13,19 +13,39 @@
       </div>
     </form>
 {{#if comments.length}}
-  <div class="col-md-6 project-list">
+  {{!-- <div class="col-md-6 project-list">
     <h3>Current Comments:</h3>
 
     {{#each comments as |comment|}}
     <div class="row mb-2">
       <div class="col-md-8">
         <h4>{{comment.content}} - {{comment.user.name}} </h4>
+        <h5>{{comment.date_created}}</h5>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
-</div>
+</div> --}}
+{{#if comments.length}}
+<h2>Current Comments:</h2>
+{{#each comments as |comment| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h3>
+      {{comment.user.name}}
+    </h3>
+
+    <p>Created on {{comment.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{comment.content}}
+    </p>
+  </div>
+
+  {{/each}}
+{{/if}}
 
 
 <script type="application/javascript">
