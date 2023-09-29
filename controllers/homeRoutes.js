@@ -37,12 +37,19 @@ router.get('/project/:id', async (req, res) => {
         },
         {
           model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['name'],
+            }
+          ]
         }
       ],
     });
 
     const project = projectData.get({ plain: true });
     console.log(project)
+    console.log(project.comments[0].user)
 
     res.render('project', {
       ...project,

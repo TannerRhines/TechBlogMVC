@@ -19,7 +19,7 @@
     {{#each comments as |comment|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4>{{comment.content}} - {{comment.user_id}} </h4>
+        <h4>{{comment.content}} - {{comment.user.name}} </h4>
       </div>
     </div>
     {{/each}}
@@ -50,7 +50,7 @@ const newFormHandler = async (event) => {
       console.log(JSON.stringify({content}))
   
       if (response.ok) {
-        // document.location.replace('/project/');
+         document.location.replace('/project/'+project_id);
         console.log(response)
       } else {
         alert('Failed to create comment');
